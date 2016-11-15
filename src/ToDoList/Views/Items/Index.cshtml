@@ -1,0 +1,20 @@
+﻿@model IEnumerable<ToDoList.Models.Item>
+
+<html>
+<head>
+    <title>To Do List</title>
+</head>
+<body>
+    <h2>To Do List</h2>
+    <h4>@Html.DisplayNameFor(model => model.Description)</h4>
+    <ul>
+        @foreach (var listItem in Model)
+        {
+            <li>@Html.DisplayFor(modelItem => listItem.Description) | @Html.ActionLink("Details", "Details", new { id = listItem.ItemId })</li>
+            //id = listItem.ItemId is how .NET knows which id to use in the Details action.
+            //This has to match the parameter used by the Details method
+        }
+    </ul>
+    <p>@Html.ActionLink("Add new item", "Create")</p>
+</body>
+</html>
